@@ -1,4 +1,4 @@
-package com.weather.repositorie;
+package com.weather.repository;
 
 import java.util.Optional;
 
