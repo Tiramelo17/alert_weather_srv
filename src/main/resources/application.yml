@@ -1,11 +1,11 @@
 spring:
   application:
-    name: ms-order
+    name: alert_weather_srv
 
   datasource:
-    url: jdbc:MySql://localhost:3307/order_db
-    username: root
-    password: root
+    url: ${SPRING_DATASOURCE_URL:jdbc:MySql://localhost:3307/order_db}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: ${SPRING_DATASOURCE_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -23,5 +23,6 @@ springdoc:
   api-docs:
     path: /v3/api-docs
 
-
-
+weather:
+  api:
+    key: "${YOUR_API_KEY}"

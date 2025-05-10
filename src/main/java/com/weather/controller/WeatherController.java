@@ -9,23 +9,16 @@ import com.weather.service.WeatherService;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/weather")
 @RequiredArgsConstructor
 public class WeatherController {
-    private final WeatherService weatherService;
+  private final WeatherService weatherService;
 
-    @GetMapping
-    public FindWeatherResponse getMethodName(@RequestBody FindWeatherRequest request) {
-        return weatherService.getWeather(request);
-    }
-
-    @PostMapping
-    public void postMethodName() {
-        weatherService.createWeather();
-    }
-
+  @GetMapping
+  public FindWeatherResponse getMethodName(@RequestBody FindWeatherRequest request) {
+    return weatherService.getWeather(request);
+  }
 }
