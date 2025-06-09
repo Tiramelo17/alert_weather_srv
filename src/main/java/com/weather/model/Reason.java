@@ -1,12 +1,7 @@
 package com.weather.model;
 
-import java.util.Date;
-
-import jakarta.annotation.Generated;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,7 +18,11 @@ public class Reason {
   Long id;
   String name;
   String description;
+  String address;
+
+  @Enumerated(EnumType.STRING)
+  WarnType warnType;
 
   @Builder.Default
-  Date createdAt = new Date();
+  LocalDateTime createdAt = LocalDateTime.now();
 }

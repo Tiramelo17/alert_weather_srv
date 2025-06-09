@@ -1,17 +1,13 @@
 package com.weather.service;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.weather.model.Reason;
 import com.weather.model.mapper.ReasonMapper;
 import com.weather.model.request.ReasonRequest;
 import com.weather.model.response.GetReasonListResponse;
 import com.weather.repository.ReasonRepository;
-
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -23,11 +19,10 @@ public class ReasonService {
 
   public void createNewReason(ReasonRequest request) {
     Reason reason = mapper.mapToReason(request);
-
     reasonRepository.save(reason);
   }
 
-  public GetReasonListResponse findReassons() {
+  public GetReasonListResponse findReasons() {
     List<Reason> reasons = reasonRepository.findAll();
     return GetReasonListResponse.builder().reasonsList(
         mapper.mapToReasonResponseList(reasons))
@@ -35,9 +30,11 @@ public class ReasonService {
   }
 
   public void deleteReasonOutOfTime() {
-    Calendar calendar = Calendar.getInstance();
-    calendar.add(Calendar.HOUR, -12);
-    Date cutoffDate = calendar.getTime();
-    reasonRepository.deleteReasonOutOfTime(cutoffDate);
+    reasonRepository.deleteReasonOutOfTime(LocalDateTime.now().minusHours(12));
   }
+
+  public List<Reason> findReasonToTrend(){
+    return reasonRepository.findReasonToTrend(LocalDateTime.now().minusHours(4));
+  }
+
 }

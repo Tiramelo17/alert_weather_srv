@@ -27,7 +27,7 @@ public class ReasonController {
 
   @GetMapping
   public GetReasonListResponse getAllReasons() {
-    return service.findReassons();
+    return service.findReasons();
   }
 
 }

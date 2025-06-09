@@ -1,5 +1,6 @@
 package com.weather.controller;
 
+import com.weather.model.response.TrendWeatherResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.weather.model.request.FindWeatherRequest;
@@ -20,5 +21,10 @@ public class WeatherController {
   @GetMapping
   public FindWeatherResponse getMethodName(@RequestBody FindWeatherRequest request) {
     return weatherService.getWeather(request);
+  }
+
+  @GetMapping("/trend")
+  public TrendWeatherResponse getWeatherTrend() {
+    return weatherService.getWeatherTrend();
   }
 }
