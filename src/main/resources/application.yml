@@ -3,7 +3,7 @@ spring:
     name: alert_weather_srv
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:MySql://localhost:3307/order_db}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/weather_db}
     username: ${SPRING_DATASOURCE_USERNAME:root}
     password: ${SPRING_DATASOURCE_PASSWORD:root}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -25,4 +25,4 @@ springdoc:
 
 weather:
   api:
-    key: "${YOUR_API_KEY}"
+    key: "${YOUR_API_KEY:AIzaSyAmPp6u8R17f5h27OpphfsZy59xmASrpBc}"
